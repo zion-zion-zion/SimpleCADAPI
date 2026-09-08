@@ -5,39 +5,38 @@ build/
 dist/
 wheels/
 *.egg-info
+.pytest_cache/
+.cache/
 
 # Virtual environments
 .venv
 
 .env
 
+# Local CAD output
+out/
 output/
 
-# Sandbox artifacts
-sandbox/
-design-doc/
-
-# Generated skills archives
-skills/*.tar.gz
+# Host-local files; tracked skill symlinks are added explicitly
+.pi/*
+!.pi/skills/
+!.pi/skills/cadflow
+.claude/*
+!.claude/skills/
+!.claude/skills/cadflow
 
 .DS_Store
 
 # CAD/export artifacts
 *.step
 *.stl
-examples.py
+*.glb
+*.dxf
 
-# Browser viewer dependencies and build output
-viewer/node_modules/
-viewer/dist/
-viewer/pnpm-lock.yaml
-
-# Generated bilingual documentation site
+# Leftover local Harness artifacts; do not delete them from disk
+backend/
+benchmark/
+examples/
 site/
-design-docs/
-
-**/.vite/
-
-# Benchmark caches and immutable run records
-benchmark/.cache/
-benchmark/runs/
+vendor/
+viewer/

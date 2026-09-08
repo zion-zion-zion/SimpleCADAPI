@@ -1,0 +1,29 @@
+name: CadFlow Skill
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: read
+
+concurrency:
+  group: skill-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.12"
+      - name: Install CadFlow from PyPI
+        run: uv pip install --system cadflow==0.2.0 pytest pyyaml
+      - name: Run maintenance tests
+        run: python -m pytest

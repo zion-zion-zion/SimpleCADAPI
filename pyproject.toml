@@ -1,50 +1,22 @@
 [project]
-name = "cadflow-harness"
+name = "cadflow-skill"
 version = "0.1.0"
-description = "CadFlow Harness, a text-to-CAD agent built on CadFlow"
+description = "A self-contained CadFlow skill for Codex, Pi, and Claude Code"
 readme = "README.md"
 license = { file = "LICENSE" }
 requires-python = ">=3.12,<3.14"
-dependencies = [
-    "cadflow==0.2.0; sys_platform == 'linux' and platform_machine == 'x86_64' and python_version == '3.12'",
-    "cadflow==0.2.0; sys_platform == 'darwin' and platform_machine == 'arm64' and python_version == '3.13'",
-    "deepagents==0.7.5",
-    "fastapi>=0.115,<1",
-    "langchain-openai>=1.0,<2",
-    "python-dotenv>=1.0,<2",
-    "uvicorn>=0.34,<1",
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pyyaml>=6.0",
+    "cadflow==0.2.0",
 ]
 
 [tool.uv]
 package = false
-environments = [
-    "sys_platform == 'linux' and platform_machine == 'x86_64' and python_version == '3.12'",
-    "sys_platform == 'darwin' and platform_machine == 'arm64' and python_version == '3.13'",
-]
-
-[tool.uv.sources]
-cadflow = [
-    { path = "vendor/cadflow-0.2.0-cp312-cp312-linux_x86_64.whl", marker = "sys_platform == 'linux' and platform_machine == 'x86_64' and python_version == '3.12'" },
-    { path = "vendor/cadflow-0.2.0-cp313-cp313-macosx_12_0_arm64.whl", marker = "sys_platform == 'darwin' and platform_machine == 'arm64' and python_version == '3.13'" },
-]
 
 [tool.pytest.ini_options]
-pythonpath = ["."]
-addopts = "-m 'not live_agent'"
-markers = [
-    "live_agent: opt-in tests that call the configured real model provider",
-]
-
-[dependency-groups]
-dev = [
-    "twine>=6.1.0",
-    "pytest",
-    "jupyterlab>=4.5.5",
-    "ipykernel>=6.29.5",
-    "matplotlib>=3.10.8",
-    "numpy-stl>=3.2.0",
-    "packaging",
-    "trimesh>=4.11.3",
-    "datamodel-code-generator==0.32.0",
-    "zensical==0.0.57",
-]
+testpaths = ["tests"]
+addopts = "-q"
