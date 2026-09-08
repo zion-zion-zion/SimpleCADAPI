@@ -1,4 +1,4 @@
 interface:
   display_name: "CadFlow"
-  short_description: "Model CAD parts and assemblies with CadFlow from PyPI"
-  default_prompt: "Use $cadflow to prepare a CadFlow 0.2.0 environment and write a Python program that models the requested part or assembly."
+  short_description: "Model CAD parts, assemblies, and static cloth with CadFlow from PyPI"
+  default_prompt: "Use $cadflow to prepare a CadFlow 0.2.0 environment and write a Python program that models the requested part, assembly, or static flexible shell."

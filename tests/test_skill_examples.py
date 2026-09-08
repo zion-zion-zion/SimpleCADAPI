@@ -64,3 +64,22 @@ def test_hinge_assembly_exports_reopenable_step(tmp_path: Path) -> None:
         imported = model.import_step(str(step_path))
         assert imported.topology["solids"] == 2
         assert imported.volume > 0.0
+
+
+def test_sleeve_panel_exports_watertight_shell(tmp_path: Path) -> None:
+    module = _load("sleeve_panel")
+    metrics = module.build_sleeve_panel(tmp_path)
+    obj_path = Path(metrics["obj"])
+    stl_path = Path(metrics["stl"])
+    json_path = Path(metrics["json"])
+    obj_text = obj_path.read_text(encoding="utf-8")
+    assert obj_text.startswith("# CadFlow flexible")
+    assert any(line.startswith("v ") for line in obj_text.splitlines())
+    assert any(line.startswith("f ") for line in obj_text.splitlines())
+    stl = stl_path.read_bytes()
+    triangle_count = int.from_bytes(stl[80:84], "little")
+    assert len(stl) == 84 + 50 * triangle_count
+    assert triangle_count == metrics["triangle_count"] > 0
+    assert metrics["watertight"] is True
+    assert metrics["vertex_count"] > 0
+    assert json_path.read_text(encoding="utf-8").strip().startswith("{")

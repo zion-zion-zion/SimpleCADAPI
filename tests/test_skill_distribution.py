@@ -102,10 +102,11 @@ def test_examples_are_plain_python_entry_points() -> None:
     assert {path.name for path in examples} == {
         "mounting_plate.py",
         "hinge_assembly.py",
+        "sleeve_panel.py",
     }
     for path in examples:
         source = path.read_text(encoding="utf-8")
-        assert "import cadflow as cad" in source
+        assert "cadflow" in source
         assert "def main() -> None:" in source
         assert "if __name__ == " in source
         assert "build_model(" not in source

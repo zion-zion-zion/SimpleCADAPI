@@ -31,6 +31,7 @@ uv pip install --python .venv/bin/python cadflow==0.2.0 pytest pyyaml
 .venv/bin/python -m pytest
 .venv/bin/python skills/cadflow/examples/mounting_plate.py
 .venv/bin/python skills/cadflow/examples/hinge_assembly.py
+.venv/bin/python skills/cadflow/examples/sleeve_panel.py
 ```
 
 ## Skill writing

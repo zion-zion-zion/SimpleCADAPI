@@ -59,6 +59,14 @@ User programs use `import cadflow as cad` and public domain modules
 import `cadflow._engine`, OCP/CadQuery classes, `ShapeHandle`, or load the
 native library directly.
 
+## Flexible versus rigid
+
+`cadflow.flexible` builds a sampled triangle shell. It does not share a
+`cad.Model` session and cannot enter `make_part_rpart`. Positive thickness must
+come out watertight; if it does not, change sections or thickness rather than
+calling it a render-only mesh. Wrinkle parameters only perturb the static
+shape. Motion, gravity, and collision are out of scope.
+
 ## Assemblies
 
 Ground one component before `solve_assembly_constraints_rassembly(...,

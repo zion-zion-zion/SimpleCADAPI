@@ -80,6 +80,21 @@ Use this when the input is an existing STEP file or when comparing two files.
 Rendering helpers may need extra Python packages; skip them unless the user
 asked for images.
 
+## Flexible mesh export
+
+Flexible results are triangle shells, not BREP:
+
+```python
+mesh.write_obj("sleeve.obj")
+mesh.write_stl("sleeve.stl")
+mesh.write_json("sleeve.json")
+```
+
+Check finite vertices, unit normals, index bounds, and `mesh.is_watertight`
+when thickness is positive. Binary STL length must be `84 + 50 * triangle_count`.
+Do not treat a PNG render as geometry proof. See
+[flexible-api.md](flexible-api.md).
+
 ## DXF
 
 `Shape.export_dxf` writes closed outer and inner machining loops of a planar

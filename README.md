@@ -17,7 +17,7 @@ skills/cadflow/
 ├── SKILL.md                 # trigger, environment, minimal pattern
 ├── agents/openai.yaml       # optional Codex / ChatGPT display metadata
 ├── references/              # API, pitfalls, inspect/export
-└── examples/                # part and assembly programs
+└── examples/                # part, assembly, and flexible-shell programs
 ```
 
 The skill targets **CadFlow 0.2.0** on PyPI. Published wheels:
@@ -102,6 +102,7 @@ uv pip install --python .venv/bin/python cadflow==0.2.0 pytest pyyaml
 .venv/bin/python -m pytest
 .venv/bin/python skills/cadflow/examples/mounting_plate.py
 .venv/bin/python skills/cadflow/examples/hinge_assembly.py
+.venv/bin/python skills/cadflow/examples/sleeve_panel.py
 ```
 
 These tests confirm the skill archive and that the bundled examples still run

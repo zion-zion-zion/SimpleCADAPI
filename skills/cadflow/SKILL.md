@@ -1,6 +1,6 @@
 ---
 name: cadflow
-description: CadFlow Python CAD modeling from PyPI. Use when writing or editing a CadFlow program for a mechanical part or assembly, preparing a compatible CadFlow environment, exporting STEP or STL, or inspecting CadFlow solids. CadFlow's native Python API is the modeling interface.
+description: CadFlow Python CAD modeling from PyPI. Use when writing or editing a CadFlow program for a mechanical part, assembly, static cloth, membrane, or garment, preparing a compatible CadFlow environment, exporting STEP, STL, or OBJ, or inspecting CadFlow solids and flexible meshes. CadFlow's native Python API is the modeling interface.
 license: MIT
 compatibility: Requires a published CadFlow 0.2.0 wheel (Python 3.12 on Linux x86_64 manylinux_2_31, or Python 3.13 on macOS 12+ arm64), uv or pip, and network access to PyPI.
 metadata:
@@ -77,6 +77,8 @@ with cad.Model() as model:
 - One rigid manufactured solid: `cad.Model` / `cad.Shape`.
 - Separately manufactured parts, placements, connectors, or joints: the
   replayable Part/Assembly API.
+- Static cloth, leather, membranes, draped panels, garments: `cadflow.flexible`.
+  That path is a triangle shell, not a BREP solid.
 - Keep every `Shape` inside the `Model` that created it.
 - After each boolean or finishing feature, read `describe()`, `validate()`,
   volume, bbox, and topology. Repair from those facts.
@@ -92,8 +94,9 @@ entry function, project layout, tool-call order, or review stage.
 | --- | --- |
 | Constructors, sketches, booleans, fillets | [references/part-api.md](references/part-api.md) |
 | Parts, placements, connectors, constraints | [references/assembly-api.md](references/assembly-api.md) |
+| Cloth, membranes, garments | [references/flexible-api.md](references/flexible-api.md) |
 | Measure, validate, import, export | [references/inspect-export.md](references/inspect-export.md) |
 | Session, Solid vs Shape, indices, units | [references/pitfalls.md](references/pitfalls.md) |
-| Runnable part and assembly programs | [examples/mounting_plate.py](examples/mounting_plate.py), [examples/hinge_assembly.py](examples/hinge_assembly.py) |
+| Runnable programs | [examples/mounting_plate.py](examples/mounting_plate.py), [examples/hinge_assembly.py](examples/hinge_assembly.py), [examples/sleeve_panel.py](examples/sleeve_panel.py) |
 
 Copy patterns from the examples; do not treat them as a required scaffold.

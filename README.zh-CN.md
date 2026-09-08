@@ -17,7 +17,7 @@ skills/cadflow/
 ├── SKILL.md                 # 触发条件、环境准备、最小用法
 ├── agents/openai.yaml       # Codex / ChatGPT 可选展示元数据
 ├── references/              # API、易错点、测量与导出
-└── examples/                # 零件与装配示例
+└── examples/                # 零件、装配、柔性壳体示例
 ```
 
 Skill 对应 **CadFlow 0.2.0**。PyPI 当前 wheel：
@@ -69,7 +69,7 @@ ln -sfn /path/to/CadFlow-Harness/skills/cadflow ~/.claude/skills/cadflow
 
 ## 使用
 
-向 agent 提出零件或装配需求。它应当：
+向 agent 提出零件、装配或静态柔性壳体需求。它应当：
 
 1. 在隔离环境中执行 `uv pip install cadflow==0.2.0`（或 `pip`）。
 2. 编写 `import cadflow as cad` 的普通 Python 程序。
@@ -97,6 +97,7 @@ uv pip install --python .venv/bin/python cadflow==0.2.0 pytest pyyaml
 .venv/bin/python -m pytest
 .venv/bin/python skills/cadflow/examples/mounting_plate.py
 .venv/bin/python skills/cadflow/examples/hinge_assembly.py
+.venv/bin/python skills/cadflow/examples/sleeve_panel.py
 ```
 
 这些测试只检查分发完整性和示例能否对着发布包跑通，不是用户建模管线。
