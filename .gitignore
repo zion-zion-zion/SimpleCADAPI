@@ -34,9 +34,9 @@ output/
 *.dxf
 
 # Leftover local Harness artifacts; do not delete them from disk
-backend/
-benchmark/
-examples/
-site/
-vendor/
-viewer/
+/backend/
+/benchmark/
+/examples/
+/site/
+/vendor/
+/viewer/
